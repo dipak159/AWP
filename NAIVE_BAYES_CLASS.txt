@@ -1,0 +1,28 @@
+from sklearn.datasets import load_iris
+X,y = load_iris(return_X_y=True)
+
+from sklearn.model_selection import train_test_split
+xtrain,xtest,ytrain,ytest = train_test_split(X,y,test_size=0.3,random_state=0)
+
+from sklearn.naive_bayes import GaussianNB
+clf = GaussianNB()
+clf.fit(xtrain,ytrain)
+
+ypred = clf.predict(xtest)
+ypred
+
+ypred = clf.predict(xtest)
+
+ypred
+
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(ytest,ypred)
+cm
+
+from sklearn.metrics import accuracy_score
+ac = accuracy_score(ytest,ypred)
+ac = ac*100
+ac
+
+import seaborn as sns
+sns.heatmap(cm,annot=True)

@@ -1,0 +1,47 @@
+import pandas as pd
+data = pd.read_csv('abc.csv')
+data
+
+data['price'] = data['price'].fillna(data['price'].mean())
+data
+
+data['price'] = data['price'].fillna(data['price'].median())
+data
+
+data['price'] = data['price'].fillna(data['price'].std())
+data
+
+data['price'] = data['price'].fillna(data['price'].min())
+data
+
+data['price'] = data['price'].fillna(data['price'].max())
+data
+
+## Feature Scaling ##
+
+from pandas import read_csv
+from numpy import set_printoptions
+from sklearn import preprocessing
+data = r'https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv'
+names = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+a = read_csv(data, names=names)
+a
+
+scaler = preprocessing.MinMaxScaler(feature_range=(0,1))
+rescaled = scaler.fit_transform(a)
+set_printoptions(precision=2)
+rescaled
+
+## Standardization ##
+
+from sklearn.preprocessing import StandardScaler
+data_scaler = StandardScaler().fit(a)
+data_rescaled = data_scaler.transform(a)
+data_rescaled
+
+## Binarization ##
+
+from sklearn.preprocessing import Binarizer
+binary = Binarizer(threshold=0.5)
+binary1 = binary.transform(a)
+binary1
